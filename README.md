@@ -1,6 +1,6 @@
 # grunt-smoothie
 
-> Create template based Class files for your javascript projects.
+> Mix delicious modules for your javascript projects.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`

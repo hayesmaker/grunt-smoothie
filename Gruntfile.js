@@ -33,10 +33,11 @@ module.exports = function (grunt) {
 
 		// Configuration to be run (and then tested).
 		smoothie: {
+			options: {
+				dest: 'tmp/default_options.js'
+			},
 			default_options: {
-				options: {
-					dest: 'tmp/default_options.js'
-				}
+
 			},
 			custom_options: {
 				options: {
