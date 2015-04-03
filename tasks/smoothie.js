@@ -5,46 +5,29 @@
  * Copyright (c) 2015 @hayes_maker
  * Licensed under the MIT license.
  */
-
 'use strict';
 
-module.exports = function(grunt) {
+var config = require('./helpers/config');
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+module.exports = function (grunt) {
 
-  grunt.registerMultiTask('smoothie', 'Create template based Class files for your javascript projects.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
+	// Please see the Grunt documentation for more information regarding task
+	// creation: http://gruntjs.com/creating-tasks
+	grunt.registerMultiTask('smoothie', 'Mix delicious modules for your javascript projects.', function () {
+		var c = config(grunt);
+		// Merge task-specific and/or target-specific options with these defaults.
+		var options = this.options({
+			name: "party-pokie",
+			description: "A reference to Party Pokie app",
+			moduleType: 'Controller',
+			plugin: 'angular'
+		});
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+		var template = c.getTemplate(options.moduleType);
+		var content = grunt.template.process(template.call(this, options), { data: options });
 
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
-  });
+		grunt.file.write(options.dest, content);
+		grunt.log.writeln('smoothie served: "' + options.dest + '" ... delicious!');
+	});
 
 };

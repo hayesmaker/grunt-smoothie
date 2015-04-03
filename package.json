@@ -38,5 +38,8 @@
   },
   "keywords": [
     "gruntplugin"
-  ]
+  ],
+  "dependencies": {
+    "lodash": "^3.6.0"
+  }
 }
