@@ -17,9 +17,6 @@ module.exports = function (grunt) {
 		var c = config(grunt);
 		// Merge task-specific and/or target-specific options with these defaults.
 		var options = this.options({
-			name: "party-pokie",
-			description: "A reference to Party Pokie app",
-			moduleType: 'Controller',
 			plugin: 'angular'
 		});
 

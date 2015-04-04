@@ -34,6 +34,9 @@ module.exports = function (grunt) {
 		// Configuration to be run (and then tested).
 		smoothie: {
 			options: {
+				name: "party-pokie",
+				description: "A reference to Party Pokie app",
+				moduleType: 'Controller',
 				dest: 'tmp/default_options.js'
 			},
 			default_options: {
@@ -42,7 +45,16 @@ module.exports = function (grunt) {
 			custom_options: {
 				options: {
 					yuidocs: true,
+					moduleType: 'Controller',
 					dest: 'tmp/custom_options.js'
+				}
+			},
+			my_custom_angular_controller: {
+				options: {
+					appName: "angular-smoothie",
+					controllerName: "MyAngularController",
+					moduleType: 'CustomController',
+					dest: 'tmp/myCustomController.js'
 				}
 			}
 		},

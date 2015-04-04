@@ -7,8 +7,8 @@ var _ = require('lodash');
 
 
 /**
- * @supports yuidocs
- * @type <%moduleMetaComment: Function, controllerMetaComment: Function, methodMetaComment: Function%>
+ *
+ * @type {{moduleMetaComment: Function, controllerMetaComment: Function, methodMetaComment: Function}}
  */
 var docHelpers = {
 

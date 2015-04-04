@@ -1,6 +1,10 @@
 # grunt-smoothie
 
-> Mix delicious modules for your javascript projects.
+## Features
+
+> Auto generate modules for your javascript projects by mixing delicious flavours.
+> Sprinkle in some auto generated doc meta comments
+> Create test files in your favourite framework
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
