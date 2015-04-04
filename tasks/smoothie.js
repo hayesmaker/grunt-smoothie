@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 			plugin: 'angular'
 		});
 
-		var template = c.getTemplate(options.moduleType);
+		var template = c.getTemplate(options.moduleType, options.flavour);
 		var content = grunt.template.process(template.call(this, options), { data: options });
 
 		grunt.file.write(options.dest, content);

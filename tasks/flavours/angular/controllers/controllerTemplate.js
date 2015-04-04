@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * My <%= appName %> module
+ * <%= appName %>
  * A reference to <%= appName %> app
  *
  * @type {module}
@@ -10,14 +10,14 @@ var app = angular.module('<%= appName %>');
 
 
 /**
- * Define <%= controllerName %>
+ * Define <%= moduleName %>
  *
  * @namespace <%= appName %>
- * @class <%= controllerName %>
+ * @class <%= moduleName %>
  * @constructor
  */
-app.controller('<%= controllerName %>', ['$scope', function ($scope) {
-	console.log('<%= controllerName %>');
+app.controller('<%= moduleName %>', ['$scope', function ($scope) {
+	console.log('<%= moduleName %>');
 
 	/**
 	 * It's a start right?

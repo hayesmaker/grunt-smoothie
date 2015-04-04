@@ -39,24 +39,25 @@ module.exports = function (grunt) {
 				moduleType: 'Controller',
 				dest: 'tmp/default_options.js'
 			},
-			default_options: {
-
-			},
-			custom_options: {
-				options: {
-					yuidocs: true,
-					moduleType: 'Controller',
-					dest: 'tmp/custom_options.js'
-				}
-			},
-			my_custom_angular_controller: {
+			my_default_angular_controller: {
 				options: {
 					appName: "angular-smoothie",
-					controllerName: "MyAngularController",
-					moduleType: 'CustomController',
-					dest: 'tmp/myCustomController.js'
+					moduleName: "MyAngularController",
+					moduleType: 'Controller',
+					flavour: 'default',
+					dest: 'tmp/myDefaultController.js'
+				}
+			},
+			my_static_angular_service: {
+				options: {
+					appName: "angular-smoothie",
+					moduleName: "angularServiceSingleton",
+					moduleType: "Service",
+					flavour: "static",
+					dest: 'tmp/myStaticService.js'
 				}
 			}
+
 		},
 
 		// Unit tests.

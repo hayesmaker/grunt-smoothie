@@ -27,31 +27,21 @@ exports.smoothie = {
 		// setup here if necessary
 		done();
 	},
-	default_options: function (test) {
+	my_default_angular_controller: function (test) {
 		test.expect(1);
 
-		var actual = grunt.file.read('tmp/default_options.js');
-		var expected = grunt.file.read('test/expected/default_options.js');
-		test.equal(actual, expected, 'Should create a basic angular module getter.');
+		var actual = grunt.file.read('tmp/myDefaultController.js');
+		var expected = grunt.file.read('test/expected/myDefaultController.js');
+		test.equal(actual, expected, 'Should create a basic angular controller based on vanilla controller template');
 
 		test.done();
 	},
-	custom_options: function (test) {
+	my_static_angular_service: function (test) {
 		test.expect(1);
 
-		var actual = grunt.file.read('tmp/custom_options.js');
-		var expected = grunt.file.read('test/expected/custom_options.js');
-		test.equal(actual, expected, 'Should create a basic angular module getter with yuidocs meta comment');
-
-		test.done();
-	},
-
-	my_custom_angular_controller: function (test) {
-		test.expect(1);
-
-		var actual = grunt.file.read('tmp/myCustomController.js');
-		var expected = grunt.file.read('test/expected/myCustomController.js');
-		test.equal(actual, expected, 'Should create a custom angular controller based on custom controller template');
+		var actual = grunt.file.read('tmp/myStaticService.js');
+		var expected = grunt.file.read('test/expected/myStaticService.js');
+		test.equal(actual, expected, 'Should create a basic data model, inside an angular service based on static service template');
 
 		test.done();
 	}

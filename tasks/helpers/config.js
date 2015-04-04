@@ -1,25 +1,41 @@
-var controllerTemplates = require('../flavours/angular/controllerTemplates');
 var _ = require('lodash');
 
 module.exports = function(grunt) {
 
 	var plugins = ['angular'];
 	var moduleTypes = ['Main', 'Controller', 'Directive', 'Service'];
+	var flavours = ['default'];
+
+	var controllerTemplates = {
+		classic: function() {
+
+		}
+	};
 
 	var modulesApi = [
-		{moduleType: "Main", 		template: controllerTemplates.classic},
-		{moduleType: "Controller", 	template: controllerTemplates.classic},
-		{moduleType: "Directive", 	template: controllerTemplates.classic},
-		{moduleType: "Service", 	template: controllerTemplates.classic},
+		{moduleType: "main", 		template: controllerTemplates.classic},
+		{moduleType: "controller", 	template: controllerTemplates.classic},
+		{moduleType: "directive", 	template: controllerTemplates.classic},
+		{moduleType: "service", 	template: controllerTemplates.classic},
 		{
-			moduleType: "CustomController",
+			moduleType: "controller_default",
 			template: function() {
-				return grunt.file.read('tasks/flavours/angular/custom/controllerTemplate.js')
-		}}
+				return grunt.file.read('tasks/flavours/angular/controllers/controllerTemplate.js')
+			}
+		},
+		{
+			moduleType: "service_static",
+			template: function() {
+				return grunt.file.read('tasks/flavours/angular/services/staticServiceTemplate.js')
+			}
+		}
+
+
 	];
 
-	var getTemplate = function(type) {
-		var module = _.find(modulesApi, {moduleType: type});
+	var getTemplate = function(type, flavour) {
+		var smoothieMix = flavour? type.toLowerCase() + '_' + flavour.toLowerCase() : type.toLowerCase();
+		var module = _.find(modulesApi, { moduleType: smoothieMix });
 		return module.template;
 	};
 
@@ -27,9 +43,6 @@ module.exports = function(grunt) {
 		plugins: plugins,
 		moduleTypes: moduleTypes,
 		modulesApi: modulesApi,
-
 		getTemplate: getTemplate
 	}
-
-
 };

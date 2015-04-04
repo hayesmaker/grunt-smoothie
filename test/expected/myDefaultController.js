@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * My angular-smoothie module
+ * angular-smoothie
  * A reference to angular-smoothie app
  *
  * @type {module}
