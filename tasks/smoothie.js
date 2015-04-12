@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 	grunt.registerMultiTask('testsmoothie', 'Test delicious smoothie made modules for your javascript projects.', function () {
 		//grunt.task.requires('prompt:smoothie');
 		var config = require('./helpers/config');
-		var change = require('./../node_modules/change-case/change-case.js');
+		var change = require('change-case');
 		var c = config(grunt);
 		// Merge task-specific and/or target-specific options with these defaults.
 		var options = this.options({
@@ -46,9 +46,9 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerMultiTask('smoothie', 'Mix delicious smoothie modules for your javascript projects', function() {
-		var inquirer = require("./../node_modules/inquirer/lib/inquirer.js");
+		var inquirer = require("inquirer");
 		var config = require('./helpers/config');
-		var change = require('./../node_modules/change-case/change-case.js');
+		var change = require('change-case');
 		var c = config(grunt);
 
 		var options = this.options({
