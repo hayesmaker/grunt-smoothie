@@ -29,66 +29,75 @@ In your project's Gruntfile, add a section named `smoothie` to the data object p
 ```js
 grunt.initConfig({
   smoothie: {
-    options: {
-      // Task-specific options go here.
-    },
     your_target: {
       // Target-specific file lists and/or options go here.
-    },
+    }
   },
 });
 ```
 
+```shell
+grunt smoothie
+```
+
+Then follow the instructions.
+
 ### Options
 
-#### options.separator
+#### options.dir
 Type: `String`
-Default value: `',  '`
+Default value: `'app/'`
 
-A string value that is used to do something with whatever.
+The default directory you would like new files to be added to
 
-#### options.punctuation
+#### options.moduleType
 Type: `String`
-Default value: `'.'`
+Default value: `'node'`
 
-A string value that is used to do something else with whatever else.
+The type of module you would like smoothie to generate for you
+
+#### options.flavour
+Type: `String`
+Default value: `'class'`
+
+Smoothies require flavours to mix in to the module... This flavour is "Class" which creates a Class style node module based on https://github.com/FredKSchott/the-node-way
+
+#### options.spec
+Type: `Boolean`
+Default value: `'true'`
+
+Wny not include a Test for your awesome smoothie.. The default test even contains pre written mocha specs which should pass on an unmodified smoothie
+nb. Don't forget to modify your tests if you change your smoothie code. Or it won't pass anymore.
+
+
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
   smoothie: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+        default_task: {
+            options: {
+                dir: "app/",
+                moduleType: 'node',
+                flavour: 'class',
+                spec: true
+            }
+        }
     },
-  },
 });
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  smoothie: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+v1.0.0
+-------
+- initial project inception
+- creates "Class" style node modules
+
 # grunt-smoothie
