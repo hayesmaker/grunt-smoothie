@@ -12,13 +12,15 @@
  * @param grunt
  */
 module.exports = function (grunt) {
+	var change = require('./node_modules/change-case/change-case.js');
 
 	// Project configuration.
 	grunt.initConfig({
 		jshint: {
 			all: [
 				'Gruntfile.js',
-				'tasks/*.js',
+				'tasks/**/*.js',
+				'!tasks/flavours/**/*.js',
 				'<%= nodeunit.tests %>'
 			],
 			options: {
@@ -32,12 +34,12 @@ module.exports = function (grunt) {
 		},
 
 		// Configuration to be run (and then tested).
-		smoothie: {
+		testsmoothie: {
 			options: {
-				name: "party-pokie",
-				description: "A reference to Party Pokie app",
-				moduleType: 'Controller',
-				dest: 'tmp/default_options.js'
+				moduleName: "MyClassModule",
+				moduleType: 'node',
+				flavour: 'class',
+				dest: 'tmp/MyNodeClass'
 			},
 			my_default_angular_controller: {
 				options: {
@@ -45,7 +47,7 @@ module.exports = function (grunt) {
 					moduleName: "MyAngularController",
 					moduleType: 'Controller',
 					flavour: 'default',
-					dest: 'tmp/myDefaultController.js'
+					dest: 'tmp/myDefaultController'
 				}
 			},
 			my_static_angular_service: {
@@ -54,17 +56,46 @@ module.exports = function (grunt) {
 					moduleName: "angularServiceSingleton",
 					moduleType: "Service",
 					flavour: "static",
-					dest: 'tmp/myStaticService.js'
+					dest: 'tmp/myStaticService'
+				}
+			},
+			my_node_class: {
+				options: {
+					moduleName: "MyClassModule",
+					moduleType: 'node',
+					flavour: 'class',
+					dest: 'tmp/MyNodeClass',
+					spec: true
 				}
 			}
+		},
 
+		smoothie: {
+			default_task: {
+				options: {
+					dir: "app/",
+					moduleType: 'node',
+					flavour: 'class',
+					spec: true
+				}
+			}
 		},
 
 		// Unit tests.
 		nodeunit: {
-			tests: ['test/*_test.js']
-		}
+			tests: ['test/nodeunit/*_test.js']
+		},
 
+		mochaTest: {
+			test: {
+				options: {
+					reporter: 'nyan',
+					quiet: false, // Optionally suppress output to standard out (defaults to false)
+					clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
+				},
+				src: ['test/mocha/**/*.js']
+			}
+		}
 	});
 
 	// Actually load this plugin's task(s).
@@ -74,12 +105,14 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
+	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-prompt');
 
 	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
 	// plugin's task(s), then test the result.
-	grunt.registerTask('test', ['clean', 'smoothie', 'nodeunit']);
+	grunt.registerTask('test', ['clean', 'testsmoothie', 'nodeunit', 'mochaTest']);
 
 	// By default, lint and run all tests.
-	grunt.registerTask('default', ['jshint', 'test']);
+	grunt.registerTask('default', ['smoothie']);
 
 };

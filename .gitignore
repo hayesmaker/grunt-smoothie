@@ -1,3 +1,5 @@
+app/
+tmp/
 node_modules
 npm-debug.log
 .idea/

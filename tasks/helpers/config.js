@@ -12,25 +12,38 @@ module.exports = function(grunt) {
 		}
 	};
 
+
+
 	var modulesApi = [
+		//for reference
 		{moduleType: "main", 		template: controllerTemplates.classic},
-		{moduleType: "controller", 	template: controllerTemplates.classic},
-		{moduleType: "directive", 	template: controllerTemplates.classic},
-		{moduleType: "service", 	template: controllerTemplates.classic},
 		{
 			moduleType: "controller_default",
 			template: function() {
-				return grunt.file.read('tasks/flavours/angular/controllers/controllerTemplate.js')
+				return grunt.file.read('tasks/flavours/angular/controllers/controllerTemplate.js');
 			}
 		},
 		{
 			moduleType: "service_static",
 			template: function() {
-				return grunt.file.read('tasks/flavours/angular/services/staticServiceTemplate.js')
+				return grunt.file.read('tasks/flavours/angular/services/staticServiceTemplate.js');
+			}
+		},
+		{
+			moduleType: "node_class",
+			template: function() {
+				return grunt.file.read('tasks/flavours/node/app/classModule.js');
 			}
 		}
+	];
 
-
+	var specsApi = [
+		{
+			moduleType: "node_class",
+			template: function() {
+				return grunt.file.read('tasks/flavours/node/specs/classModuleSpec.js');
+			}
+		}
 	];
 
 	var getTemplate = function(type, flavour) {
@@ -39,10 +52,18 @@ module.exports = function(grunt) {
 		return module.template;
 	};
 
+	var getSpec = function(type, flavour) {
+		var smoothieMix = flavour? type.toLowerCase() + '_' + flavour.toLowerCase() : type.toLowerCase();
+		var moduleSpec = _.find(specsApi, { moduleType: smoothieMix});
+		return moduleSpec.template;
+
+	};
+
 	return {
 		plugins: plugins,
 		moduleTypes: moduleTypes,
 		modulesApi: modulesApi,
-		getTemplate: getTemplate
-	}
+		getTemplate: getTemplate,
+		getSpec: getSpec
+	};
 };
