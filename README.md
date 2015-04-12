@@ -36,11 +36,13 @@ grunt.initConfig({
 });
 ```
 
+### Usage
+Run the task then follow the instructions.
+
 ```shell
 grunt smoothie
 ```
 
-Then follow the instructions.
 
 ### Options
 
