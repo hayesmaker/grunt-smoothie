@@ -73,7 +73,7 @@ module.exports = function (grunt) {
 				grunt.file.write(testDest + "Spec.js", testContent);
 			}
 
-			grunt.log.writeln('smoothie served: "' + dest + '" ... delicious!');
+			grunt.log.writeln('smoothie served: "' + srcDest + '" ... delicious!');
 			done();
 		};
 
