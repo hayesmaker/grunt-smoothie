@@ -61,11 +61,13 @@ module.exports = function (grunt) {
 			},
 			my_node_class: {
 				options: {
-					moduleName: "MyClassModule",
+					src: "app/",
+					test: "app/test/",
 					moduleType: 'node',
 					flavour: 'class',
-					dest: 'tmp/MyNodeClass',
-					spec: true
+					spec: true,
+					moduleTemplate: '../flavours/node/specs/classModuleSpec.js',
+					specTemplate: '../flavours/node/specs/classModuleSpec.js'
 				}
 			}
 		},
@@ -77,7 +79,9 @@ module.exports = function (grunt) {
 					test: "app/test/",
 					moduleType: 'node',
 					flavour: 'class',
-					spec: true
+					spec: true,
+					moduleTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js'
 				}
 			}
 		},
@@ -107,7 +111,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-mocha-test');
-	grunt.loadNpmTasks('grunt-prompt');
 
 	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
 	// plugin's task(s), then test the result.

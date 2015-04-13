@@ -56,19 +56,27 @@ module.exports = function (grunt) {
 		});
 
 		var done = this.async();
+
+		var moduleSrc = "";
+		var prefixLen = options.src.split('/').length;
+		for (var i = 0; i < prefixLen; i++) {
+			moduleSrc+="../";
+		}
+		options.moduleSrc = moduleSrc + options.src;
+
 		var compile = function(answers) {
 			if (answers.moduleName) {
 				options.moduleName = answers.moduleName;
 			}
 			var srcDest = options.src + options.moduleName;
 			var testDest = options.test + options.moduleName;
-			var template = c.getTemplate(options.moduleType, options.flavour);
+			var template = c.getTemplate(options.moduleType, options.flavour, options.moduleTemplate);
 			var content = grunt.template.process(template.call(this, options), { data: options });
 
 			grunt.file.write(srcDest + ".js", content);
 
 			if (options.spec === true) {
-				var testTemplate = c.getSpec(options.moduleType, options.flavour);
+				var testTemplate = c.getSpec(options.moduleType, options.flavour, options.specTemplate);
 				var testContent = grunt.template.process(testTemplate.call(this, options), {data: options});
 				grunt.file.write(testDest + "Spec.js", testContent);
 			}

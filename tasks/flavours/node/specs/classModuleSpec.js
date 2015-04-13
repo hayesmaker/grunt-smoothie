@@ -1,6 +1,6 @@
 var expect = require('chai').expect,
 	sinon = require('sinon'),
-	<%= moduleName %> = require('<%= src %><%= moduleName %>');
+	<%= moduleName %> = require('<%= moduleSrc %><%= moduleName %>');
 
 describe("<%= moduleName %> tests", function() {
 
