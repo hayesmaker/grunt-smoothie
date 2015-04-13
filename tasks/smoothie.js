@@ -60,16 +60,17 @@ module.exports = function (grunt) {
 			if (answers.moduleName) {
 				options.moduleName = answers.moduleName;
 			}
-			var dest = options.dir + options.moduleName;
+			var srcDest = options.src + options.moduleName;
+			var testDest = otions.test + options.moduleName;
 			var template = c.getTemplate(options.moduleType, options.flavour);
 			var content = grunt.template.process(template.call(this, options), { data: options });
 
-			grunt.file.write(dest + ".js", content);
+			grunt.file.write(srcDest + ".js", content);
 
 			if (options.spec === true) {
 				var testTemplate = c.getSpec(options.moduleType, options.flavour);
 				var testContent = grunt.template.process(testTemplate.call(this, options), {data: options});
-				grunt.file.write(dest + "Spec.js", testContent);
+				grunt.file.write(testDest + "Spec.js", testContent);
 			}
 
 			grunt.log.writeln('smoothie served: "' + dest + '" ... delicious!');

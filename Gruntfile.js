@@ -73,7 +73,8 @@ module.exports = function (grunt) {
 		smoothie: {
 			default_task: {
 				options: {
-					dir: "app/",
+					src: "app/",
+					test: "app/test/",
 					moduleType: 'node',
 					flavour: 'class',
 					spec: true
