@@ -61,7 +61,7 @@ module.exports = function (grunt) {
 				options.moduleName = answers.moduleName;
 			}
 			var srcDest = options.src + options.moduleName;
-			var testDest = otions.test + options.moduleName;
+			var testDest = options.test + options.moduleName;
 			var template = c.getTemplate(options.moduleType, options.flavour);
 			var content = grunt.template.process(template.call(this, options), { data: options });
 
