@@ -12,27 +12,25 @@ module.exports = function(grunt) {
 		}
 	};
 
-
-
 	var modulesApi = [
 		//for reference
-		{moduleType: "main", 		template: controllerTemplates.classic},
+		{ moduleType: "main", template: controllerTemplates.classic },
 		{
 			moduleType: "controller_default",
 			template: function() {
-				return grunt.file.read('tasks/flavours/angular/controllers/controllerTemplate.js');
+				return grunt.file.read('./node_modules/grunt-smoothie/tasks/flavours/angular/controllers/controllerTemplate.js');
 			}
 		},
 		{
 			moduleType: "service_static",
 			template: function() {
-				return grunt.file.read('tasks/flavours/angular/services/staticServiceTemplate.js');
+				return grunt.file.read('./node_modules/grunt-smoothie/tasks/flavours/angular/services/staticServiceTemplate.js');
 			}
 		},
 		{
 			moduleType: "node_class",
 			template: function() {
-				return grunt.file.read('tasks/flavours/node/app/classModule.js');
+				return grunt.file.read('./node_modules/grunt-smoothie/tasks/flavours/node/app/classModule.js');
 			}
 		}
 	];
@@ -41,7 +39,7 @@ module.exports = function(grunt) {
 		{
 			moduleType: "node_class",
 			template: function() {
-				return grunt.file.read('tasks/flavours/node/specs/classModuleSpec.js');
+				return grunt.file.read('./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js');
 			}
 		}
 	];
