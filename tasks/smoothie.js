@@ -59,7 +59,7 @@ module.exports = function (grunt) {
 
 		var moduleSrc = "";
 		var prefixLen = options.src.split('/').length;
-		for (var i = 0; i < prefixLen; i++) {
+		for (var i = 0; i < prefixLen - 1; i++) {
 			moduleSrc+="../";
 		}
 		options.moduleSrc = moduleSrc + options.src;

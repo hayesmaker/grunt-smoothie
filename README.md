@@ -71,7 +71,17 @@ Default value: `'true'`
 Wny not include a Test for your awesome smoothie.. The default test even contains pre written mocha specs which should pass on an unmodified smoothie
 nb. Don't forget to modify your tests if you change your smoothie code. Or it won't pass anymore.
 
+#### options.moduleTemplate
+Type: `String`
+Default value: `'./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js'`
 
+The path to the default moduleTemplate, you can use this template, or create your own
+
+#### options.specTemplate
+Type: `String`
+Default value: `'./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js'`
+
+The path to the default specTemplate, you can use this template, or create your own
 
 ### Usage Examples
 
@@ -82,10 +92,13 @@ grunt.initConfig({
   smoothie: {
         default_task: {
             options: {
-                dir: "app/",
+                src: "app/",
+                test: "app/test/",
                 moduleType: 'node',
                 flavour: 'class',
-                spec: true
+                spec: true,
+                moduleTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js',
+                specTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js'
             }
         }
     },

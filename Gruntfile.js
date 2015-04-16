@@ -80,7 +80,7 @@ module.exports = function (grunt) {
 					moduleType: 'node',
 					flavour: 'class',
 					spec: true,
-					moduleTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+					moduleTemplate: 'tasks/flavours/node/specs/classModule.js',
 					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js'
 				}
 			}
