@@ -68,8 +68,12 @@ module.exports = function (grunt) {
 			if (answers.moduleName) {
 				options.moduleName = answers.moduleName;
 			}
-			var srcDest = options.src + options.moduleName;
-			var testDest = options.test + options.moduleName;
+			
+			options.package = answers.package || '';
+
+			var srcDest = options.src + options.package + options.moduleName;
+			var testDest = options.test + options.package + options.moduleName;
+			
 			var template = c.getTemplate(options.moduleType, options.flavour, options.moduleTemplate);
 			var content = grunt.template.process(template.call(this, options), { data: options });
 
@@ -101,6 +105,25 @@ module.exports = function (grunt) {
 				},
 				when: function () {
 					return true;
+				}
+			},
+			{
+				type: 'list',
+				name: 'package',
+				message: 'Choose package',
+				choices: options.packageMap.map(function(item) {
+					if(typeof item === 'string') {
+						item = {
+							name: change.ucFirst(item),
+							value: change.lower(item) + '/'
+						}
+					}
+					return item;
+				}),
+				default: '',
+				when: function() {
+					options.package = '';
+					return options.packageMap && options.packageMap.length > 0;
 				}
 			}
 		];
