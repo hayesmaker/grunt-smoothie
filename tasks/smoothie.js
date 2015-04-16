@@ -54,6 +54,8 @@ module.exports = function (grunt) {
 		var options = this.options({
 			moduleName: 'Example'
 		});
+		
+		options.packageMap = options.packageMap || [];
 
 		var done = this.async();
 
