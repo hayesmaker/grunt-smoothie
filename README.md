@@ -1,4 +1,4 @@
-![Delicious Smoothies](/relative/path/to/img.jpg?raw=true "Delicious JS Smoothies")
+![Delicious Smoothies](/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
 
 # grunt-smoothie
 
