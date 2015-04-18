@@ -28,79 +28,27 @@ module.exports = function (grunt) {
 			}
 		},
 
-		// Before generating any new files, remove any previously-created files.
-		clean: {
-			tests: ['tmp']
-		},
-
-		// Configuration to be run (and then tested).
-		testsmoothie: {
-			options: {
-				moduleName: "MyClassModule",
-				moduleType: 'node',
-				flavour: 'class',
-				dest: 'tmp/MyNodeClass'
-			},
-			my_default_angular_controller: {
-				options: {
-					appName: "angular-smoothie",
-					moduleName: "MyAngularController",
-					moduleType: 'Controller',
-					flavour: 'default',
-					dest: 'tmp/myDefaultController'
-				}
-			},
-			my_static_angular_service: {
-				options: {
-					appName: "angular-smoothie",
-					moduleName: "angularServiceSingleton",
-					moduleType: "Service",
-					flavour: "static",
-					dest: 'tmp/myStaticService'
-				}
-			},
-			my_node_class: {
-				options: {
-					src: "app/",
-					test: "app/test/",
-					moduleType: 'node',
-					flavour: 'class',
-					spec: true,
-					moduleTemplate: '../flavours/node/specs/classModuleSpec.js',
-					specTemplate: '../flavours/node/specs/classModuleSpec.js'
-				}
-			}
-		},
-
 		smoothie: {
 			default_task: {
 				options: {
-					src: "app/",
+					src: "app/src/",
 					test: "app/test/",
-					moduleType: 'node',
-					flavour: 'class',
-					spec: true,
-					moduleTemplate: 'tasks/flavours/node/specs/classModule.js',
-					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js'
+					moduleTemplate: 'tasks/flavours/node/app/classModule.js',
+					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+					packageMap: [
+						{
+							name: 'Top Level',
+							value: ''
+						},
+						'core',
+						'components',
+						'states',
+						'utils'
+					]
 				}
 			}
-		},
-
-		// Unit tests.
-		nodeunit: {
-			tests: ['test/nodeunit/*_test.js']
-		},
-
-		mochaTest: {
-			test: {
-				options: {
-					reporter: 'nyan',
-					quiet: false, // Optionally suppress output to standard out (defaults to false)
-					clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
-				},
-				src: ['test/mocha/**/*.js']
-			}
 		}
+
 	});
 
 	// Actually load this plugin's task(s).

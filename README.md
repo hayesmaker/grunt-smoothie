@@ -21,21 +21,6 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-smoothie');
 ```
 
-## The "smoothie" task
-
-### Overview
-In your project's Gruntfile, add a section named `smoothie` to the data object passed into `grunt.initConfig()`.
-
-```js
-grunt.initConfig({
-  smoothie: {
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    }
-  },
-});
-```
-
 ### Usage
 Run the task then follow the instructions.
 
@@ -46,73 +31,131 @@ grunt smoothie
 
 ### Options
 
-#### options.dir
+#### options.src
 Type: `String`
-Default value: `'app/'`
+Default value: `'app/src'`
 
 The default directory you would like new files to be added to
 
-#### options.moduleType
+#### options.test
 Type: `String`
-Default value: `'node'`
+Default value: `'app/test'`
 
-The type of module you would like smoothie to generate for you
-
-#### options.flavour
-Type: `String`
-Default value: `'class'`
-
-Smoothies require flavours to mix in to the module... This flavour is "Class" which creates a Class style node module based on https://github.com/FredKSchott/the-node-way
-
-#### options.spec
-Type: `Boolean`
-Default value: `'true'`
-
-Wny not include a Test for your awesome smoothie.. The default test even contains pre written mocha specs which should pass on an unmodified smoothie
-nb. Don't forget to modify your tests if you change your smoothie code. Or it won't pass anymore.
+The default directory you would like new files to be added to
 
 #### options.moduleTemplate
 Type: `String`
-Default value: `'./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js'`
+Example value: `'./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js'`
 
-The path to the default moduleTemplate, you can use this template, or create your own
+The path to the moduleTemplate, you can use this template, or create your own
 
 #### options.specTemplate
 Type: `String`
-Default value: `'./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js'`
+Example value: `'./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js'`
+Default value: `'None'`
 
-The path to the default specTemplate, you can use this template, or create your own
+The path to the specTemplate, you can use this template, or create your own
+
+
+#### options.packageMap
+Type: 'Array',
+Default value: `'Empty Array'`
+
+If you'd like to support packages in your app, (currently only 1 level of packages inside your app are supported)
+Then provide a packageMap.  When running the smoothie task, you can choose a package from this list or the 'Top Level'.
+See Example 3 below.
 
 ### Usage Examples
 
-#### Default Options
+#### Example 1:
+
+Your project code has source js files inside app/src
 
 ```js
-grunt.initConfig({
-  smoothie: {
-        default_task: {
-            options: {
-                src: "app/",
-                test: "app/test/",
-                moduleType: 'node',
-                flavour: 'class',
-                spec: true,
-                moduleTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js',
-                specTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js'
-            }
+smoothie: {
+    default_task: {
+        options: {
+            src: "app/src/",
+            moduleTemplate: 'tasks/flavours/node/app/classModule.js'
         }
-    },
-});
+    }
+}
 ```
 
+#### Example 2:
+
+Your project code has source js files inside app/src/
+Your project tests are inside app/test/ and you'd like a test (mocha / jasmine style) generated based on templateDir/classModuleSpec.js
+
+```js
+smoothie: {
+    default_task: {
+        options: {
+           src: "app/src/",
+           test: "app/test/",
+           moduleTemplate: 'tasks/flavours/node/app/classModule.js',
+           specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+        }
+    }
+}
+```
+
+#### Example 3:
+
+Your project code has source js files inside app/src/ and packages(folders): core, components, states and utils.
+
+```js
+smoothie: {
+    default_task: {
+        options: {
+            src: "app/src/",
+            test: "app/test/",
+            moduleTemplate: 'tasks/flavours/node/app/classModule.js',
+            specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+            packageMap: [
+                {
+                    name: 'Top Level',
+                    value: ''
+                },
+                'core',
+                'components',
+                'states',
+                'utils'
+            ]
+        }
+    }
+}
+```
+
+# grunt-smoothie
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+v1.3.0
+------
+- Simplified template generation
+- Only Custom paths supported now
+- Package links respected in Spec require.
+
+v1.2.0
+------
+- Packages supported
+
+v1.1.0
+------
+- custom template paths supported
+
 v1.0.0
 -------
 - initial project inception
 - creates "Class" style node modules
 
-# grunt-smoothie
+#todos
+------
+- Provide more custom templates for common module patterns in js
+- Provide some ES6 templates
+
+
+

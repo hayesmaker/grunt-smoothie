@@ -10,84 +10,55 @@
 
 module.exports = function (grunt) {
 
-	// Please see the Grunt documentation for more information regarding task
-	// creation: http://gruntjs.com/creating-tasks
-	grunt.registerMultiTask('testsmoothie', 'Test delicious smoothie made modules for your javascript projects.', function () {
-		//grunt.task.requires('prompt:smoothie');
-		var config = require('./helpers/config');
-		var change = require('change-case');
-		var c = config(grunt);
-		// Merge task-specific and/or target-specific options with these defaults.
-		var options = this.options({
-
-		});
-
-		var done = this.async();
-		var compile = function() {
-			var dest = options.dest;
-			if (dest) {
-				var template = c.getTemplate(options.moduleType, options.flavour);
-				var content = grunt.template.process(template.call(this, options), { data: options });
-
-				grunt.file.write(dest + ".js", content);
-
-				if (options.spec === true) {
-					var testTemplate = c.getSpec(options.moduleType, options.flavour);
-					var testContent = grunt.template.process(testTemplate.call(this, options), {data: options});
-					grunt.file.write(dest + "Spec.js", testContent);
-				}
-
-				grunt.log.writeln('smoothie served: "' + dest + '" ... delicious test!');
-				done();
-			}
-		};
-
-		compile();
-	});
-
 	grunt.registerMultiTask('smoothie', 'Mix delicious smoothie modules for your javascript projects', function() {
 		var inquirer = require("inquirer");
-		var config = require('./helpers/config');
 		var change = require('change-case');
-		var c = config(grunt);
-
 		var options = this.options({
-			moduleName: 'Example'
+			src: 'app/src',
+			test: 'app/test',
+			packageMap: []
 		});
 		
-		options.packageMap = options.packageMap || [];
+		//options.packageMap = options.packageMap || [];
 
 		var done = this.async();
-
-		var moduleSrc = "";
-		var prefixLen = options.src.split('/').length;
-		for (var i = 0; i < prefixLen - 1; i++) {
-			moduleSrc+="../";
-		}
-		options.moduleSrc = moduleSrc + options.src;
 
 		var compile = function(answers) {
 			if (answers.moduleName) {
 				options.moduleName = answers.moduleName;
 			}
-			
+
+			var moduleSrc = "";
+			var prefixLen = options.src.split('/').length;
+			for (var i = 0; i < prefixLen - 1; i++) {
+				moduleSrc+="../";
+			}
 			options.package = answers.package || '';
 
+			if (options.package.length) {
+				moduleSrc+="../";
+			}
+			options.moduleSrc = moduleSrc + options.src + options.package;
+			
 			var srcDest = options.src + options.package + options.moduleName;
 			var testDest = options.test + options.package + options.moduleName;
-			
-			var template = c.getTemplate(options.moduleType, options.flavour, options.moduleTemplate);
-			var content = grunt.template.process(template.call(this, options), { data: options });
 
+			grunt.log.writeln('mixing smoothie flavour: ' + options.moduleTemplate);
+
+			var template = grunt.file.read(options.moduleTemplate);
+			var content = grunt.template.process(template, { data: options });
 			grunt.file.write(srcDest + ".js", content);
+			grunt.log.writeln('Smoothie');
+			grunt.log.writeln('served: ' + srcDest + '.js');
 
-			if (options.spec === true) {
-				var testTemplate = c.getSpec(options.moduleType, options.flavour, options.specTemplate);
-				var testContent = grunt.template.process(testTemplate.call(this, options), {data: options});
+			if (options.specTemplate) {
+				var testTemplate = grunt.file.read(options.specTemplate);
+				var testContent = grunt.template.process(testTemplate, {data: options});
 				grunt.file.write(testDest + "Spec.js", testContent);
+				grunt.log.writeln('served:' + testDest + "Spec.js");
 			}
 
-			grunt.log.writeln('smoothie served: "' + srcDest + '" ... delicious!');
+			grunt.log.writeln('Delicious!');
 			done();
 		};
 
@@ -95,7 +66,7 @@ module.exports = function (grunt) {
 			{
 				type: 'input',
 				name: 'moduleName',
-				message: 'Name your node / browserify module',
+				message: 'Name your module',
 				default: 'Spaces Allowed',
 				filter: function (value) {
 					return change.pascalCase(value);
