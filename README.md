@@ -1,6 +1,6 @@
-![Delicious Smoothies](/relative/path/to/img.jpg?raw=true "Delicious JS Smoothies")
-
 # grunt-smoothie
+
+![Delicious Smoothies](/relative/path/to/img.jpg?raw=true "Delicious JS Smoothies")
 
 ## Features
 
