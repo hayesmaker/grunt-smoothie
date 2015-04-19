@@ -8,6 +8,10 @@
 
 'use strict';
 /**
+ * Current Flavours:
+ * 	- Node / Browserify Custom Type Module + Mocha Spec
+ *
+ *
  *
  * @param grunt
  */
@@ -18,8 +22,7 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'tasks/**/*.js',
-				'!tasks/flavours/**/*.js',
-				'<%= nodeunit.tests %>'
+				'!tasks/flavours/**/*.js'
 			],
 			options: {
 				jshintrc: '.jshintrc'
@@ -49,6 +52,7 @@ module.exports = function (grunt) {
 			node_test_example: {
 				options: {
 					prompt: false,
+					moduleName: "MyTestedClass",
 					src: "test/mocha/fixtures/app/",
 					test: "test/mocha/fixtures/test/",
 					moduleTemplate: 'tasks/flavours/node/app/classModule.js',

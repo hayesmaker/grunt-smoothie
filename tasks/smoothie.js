@@ -28,9 +28,12 @@ module.exports = function (grunt) {
 
 		var compile = function(answers) {
 
-			if (answers && answers.moduleName) {
+			if (answers && answers.moduleName && options.package) {
 				options.moduleName = answers.moduleName;
 				options.package = answers.package;
+			} else {
+				console.error("Prompt answers must have moduleName & package", answers);
+				throw "Inquirer prompt not configured correctly"
 			}
 
 			var moduleSrc = "";
@@ -72,7 +75,7 @@ module.exports = function (grunt) {
 				type: 'input',
 				name: 'moduleName',
 				message: 'Name your module',
-				default: 'Spaces Allowed',
+				default: '',
 				filter: function (value) {
 					return change.pascalCase(value);
 				},
