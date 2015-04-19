@@ -12,6 +12,7 @@ Auto generate modules and tests for your javascript projects.  A Template metapr
 > - Inquirer prompt for module name
 > - Inquirer prompt for package name
 > - Predefined module template for Browserify Custom Type Modules - based on the node-way https://github.com/FredKSchott/the-node-way
+> - JSDoc meta data added automatically (YUIDoc friendly format)
 
 
 ## Getting Started
