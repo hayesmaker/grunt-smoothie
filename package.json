@@ -1,7 +1,7 @@
 {
   "name": "grunt-smoothie",
   "description": "Create template based Class files for your javascript projects.",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "homepage": "https://github.com/hayesmaker/grunt-smoothie",
   "author": {
     "name": "@hayes_maker",
@@ -22,7 +22,7 @@
     }
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "test": "grunt test"
