@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/grunt-smoothie.svg)](http://badge.fury.io/js/grunt-smoothie) [![Build Status](https://travis-ci.org/hayesmaker/grunt-smoothie.svg?branch=master)](https://travis-ci.org/hayesmaker/grunt-smoothie)
 
-![Delicious Smoothies](/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
+![Delicious Smoothies](/../<images-store>/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
 
 # grunt-smoothie
 Auto generate modules and tests for your javascript projects.  A Template metaprogramming framework for javascript.
