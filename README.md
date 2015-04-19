@@ -7,7 +7,7 @@ Auto generate modules and tests for your javascript projects.  A Template metapr
 
 ## Features
 
-> - Auto generates Mocha Tests and Class files
+> - Auto generate javascript module js file and a Mocha Test js file for the module.
 > - Define your own custom templates (docs required)
 > - Inquirer prompt for module name
 > - Inquirer prompt for package name
