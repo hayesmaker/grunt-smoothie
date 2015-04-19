@@ -32,8 +32,8 @@ module.exports = function (grunt) {
 		smoothie: {
 			example_task: {
 				options: {
-					src: "app/src/",
-					test: "app/test/",
+					src: "temp/src/",
+					test: "temp/test/",
 					moduleTemplate: 'tasks/flavours/node/app/classModule.js',
 					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
 					packageMap: [
