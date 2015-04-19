@@ -12,8 +12,6 @@
  * @param grunt
  */
 module.exports = function (grunt) {
-	var change = require('./node_modules/change-case/change-case.js');
-
 	// Project configuration.
 	grunt.initConfig({
 		jshint: {
@@ -29,7 +27,7 @@ module.exports = function (grunt) {
 		},
 
 		smoothie: {
-			default_task: {
+			example_task: {
 				options: {
 					src: "app/src/",
 					test: "app/test/",
@@ -46,6 +44,30 @@ module.exports = function (grunt) {
 						'utils'
 					]
 				}
+			},
+
+			node_test_example: {
+				options: {
+					prompt: false,
+					src: "test/mocha/fixtures/app/",
+					test: "test/mocha/fixtures/test/",
+					moduleTemplate: 'tasks/flavours/node/app/classModule.js',
+					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js'
+
+				}
+			}
+		},
+
+		clean: {
+			test: ['test/mocha/fixtures/app/', 'test/mocha/fixtures/test/']
+		},
+
+		mochaTest: {
+			test: {
+				options: {
+					reporter: 'spec'
+				},
+				src: ['test/mocha/**/*.js']
 			}
 		}
 
@@ -62,9 +84,10 @@ module.exports = function (grunt) {
 
 	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
 	// plugin's task(s), then test the result.
-	grunt.registerTask('test', ['clean', 'testsmoothie', 'nodeunit', 'mochaTest']);
+	grunt.registerTask('test', ['clean', 'smoothie:node_test_example', 'mochaTest']);
+	grunt.registerTask('test:prompt', ['clean', 'smoothie:node_test_example', 'mochaTest']);
 
 	// By default, lint and run all tests.
-	grunt.registerTask('default', ['smoothie']);
+	grunt.registerTask('default', ['smoothie:example_task']);
 
 };

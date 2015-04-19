@@ -1,2 +1,2 @@
-test/mocha
+test/mocha/
 --recursive

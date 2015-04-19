@@ -14,8 +14,11 @@ module.exports = function (grunt) {
 		var inquirer = require("inquirer");
 		var change = require('change-case');
 		var options = this.options({
+			prompt: true,
 			src: 'app/src',
 			test: 'app/test',
+			moduleName: "PleaseDefineMe",
+			package: '',
 			packageMap: []
 		});
 		
@@ -24,8 +27,10 @@ module.exports = function (grunt) {
 		var done = this.async();
 
 		var compile = function(answers) {
-			if (answers.moduleName) {
+
+			if (answers && answers.moduleName) {
 				options.moduleName = answers.moduleName;
+				options.package = answers.package;
 			}
 
 			var moduleSrc = "";
@@ -33,7 +38,7 @@ module.exports = function (grunt) {
 			for (var i = 0; i < prefixLen - 1; i++) {
 				moduleSrc+="../";
 			}
-			options.package = answers.package || '';
+
 
 			if (options.package.length) {
 				moduleSrc+="../";
@@ -101,6 +106,12 @@ module.exports = function (grunt) {
 			}
 		];
 
-		inquirer.prompt(questions, compile);
+		if (options.prompt) {
+			inquirer.prompt(questions, compile);
+		} else {
+			compile();
+		}
+
+
 	});
 };
