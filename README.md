@@ -37,8 +37,23 @@ Run the task then follow the instructions.
 grunt smoothie
 ```
 
+## Templates:
+- Using packaged templates (aka flavours)
+> Define path to the template which by default are inside './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js'
+> If you define a specTemplate, a Spec file (or Test Suite file for your module) is also created.
+
+- Adding Custom Templates
+> See making templates at https://github.com/hayesmaker/grunt-smoothie/tree/master/tasks/flavours/
+
 
 ### Options
+
+#### options.prompt
+Type: `Boolean`
+Default value: `true`
+
+When set to true the user is given a prompt to enter their module name, and packageName if packageMap option is present.
+Should be set to false, when testing tasks.
 
 #### options.src
 Type: `String`
@@ -61,14 +76,14 @@ The path to the moduleTemplate, you can use this template, or create your own
 #### options.specTemplate
 Type: `String`
 Example value: `'./node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js'`
-Default value: `'None'`
+Default value: `None`
 
 The path to the specTemplate, you can use this template, or create your own
 
 
 #### options.packageMap
 Type: 'Array',
-Default value: `'Empty Array'`
+Default value: `Empty Array`
 
 If you'd like to support packages in your app, (currently only 1 level of packages inside your app are supported)
 Then provide a packageMap.  When running the smoothie task, you can choose a package from this list or the 'Top Level'.
@@ -139,7 +154,11 @@ smoothie: {
 # grunt-smoothie
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+- Task changes
+> In lieu of a formal styleguide, take care to maintain the existing coding style.
+> Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+- Adding Templates
+> See making templates at https://github.com/hayesmaker/grunt-smoothie/tree/master/tasks/flavours/
 
 ## Release History
 v1.3.0
