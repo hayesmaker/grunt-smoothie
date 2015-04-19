@@ -55,8 +55,8 @@ module.exports = function (grunt) {
 					moduleName: "MyTestedClass",
 					src: "test/mocha/fixtures/app/",
 					test: "test/mocha/fixtures/test/",
-					moduleTemplate: 'tasks/flavours/node/app/classModule.js',
-					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js'
+					moduleTemplate: './tasks/flavours/node/app/classModule.js',
+					specTemplate: './tasks/flavours/node/specs/classModuleSpec.js'
 
 				}
 			}
@@ -83,7 +83,6 @@ module.exports = function (grunt) {
 	// These plugins provide necessary tasks.
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-mocha-test');
 
 	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
