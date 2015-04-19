@@ -1,4 +1,4 @@
-# grunt-smoothie
+# grunt-smoothie [![Build Status](https://travis-ci.org/hayesmaker/grunt-smoothie.svg?branch=master)](https://travis-ci.org/hayesmaker/grunt-smoothie)
 
 ![Delicious Smoothies](/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
 
