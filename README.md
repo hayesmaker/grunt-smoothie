@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/hayesmaker/grunt-smoothie.svg?branch=master)](https://travis-ci.org/hayesmaker/grunt-smoothie)
+[![npm version](https://badge.fury.io/js/grunt-smoothie.svg)](http://badge.fury.io/js/grunt-smoothie) [![Build Status](https://travis-ci.org/hayesmaker/grunt-smoothie.svg?branch=master)](https://travis-ci.org/hayesmaker/grunt-smoothie)
 # grunt-smoothie
 Auto generate modules for your javascript projects by mixing delicious flavours.
 
-[![npm version](https://badge.fury.io/js/grunt-smoothie.svg)](http://badge.fury.io/js/grunt-smoothie) ![Delicious Smoothies](/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
+![Delicious Smoothies](/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
 
 ## Features
 
