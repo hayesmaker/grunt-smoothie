@@ -1,8 +1,8 @@
 var expect = require('chai').expect,
 	sinon = require('sinon'),
-	PleaseDefineMe = require('../../../../test/mocha/fixtures/app/PleaseDefineMe');
+	MyTestedClass = require('../../../../test/mocha/fixtures/app/MyTestedClass');
 
-describe("PleaseDefineMe tests", function() {
+describe("MyTestedClass tests", function() {
 
 	var myClass, initSpy, logSpy;
 
@@ -12,15 +12,15 @@ describe("PleaseDefineMe tests", function() {
 
 	beforeEach(function() {
 
-		initSpy = sinon.spy(PleaseDefineMe.prototype, 'init');
+		initSpy = sinon.spy(MyTestedClass.prototype, 'init');
 		logSpy = sinon.spy(console, 'log');
 
-		myClass = new PleaseDefineMe();
+		myClass = new MyTestedClass();
 	});
 
 	afterEach(function() {
 
-		PleaseDefineMe.prototype.init.restore();
+		MyTestedClass.prototype.init.restore();
 		console.log.restore();
 
 	});
@@ -44,7 +44,7 @@ describe("PleaseDefineMe tests", function() {
 	describe("init: (*please replace with your own tests*)", function() {
 
 		it("console.log is called on init", function() {
-			expect(logSpy.called).to.equal(true);
+			expect(logSpy.called).to.equal(false);
 		});
 
 	});

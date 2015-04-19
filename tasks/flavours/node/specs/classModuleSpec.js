@@ -44,7 +44,7 @@ describe("<%= moduleName %> tests", function() {
 	describe("init: (*please replace with your own tests*)", function() {
 
 		it("console.log is called on init", function() {
-			expect(logSpy.called).to.equal(true);
+			expect(logSpy.called).to.equal(false);
 		});
 
 	});

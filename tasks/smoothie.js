@@ -28,12 +28,14 @@ module.exports = function (grunt) {
 
 		var compile = function(answers) {
 
-			if (answers && answers.moduleName && options.package) {
-				options.moduleName = answers.moduleName;
-				options.package = answers.package;
-			} else {
-				console.error("Prompt answers must have moduleName & package", answers);
-				throw "Inquirer prompt not configured correctly"
+			if (answers) {
+				if (answers.moduleName && options.package) {
+					options.moduleName = answers.moduleName;
+					options.package = answers.package;
+				} else {
+					console.error("Prompt answers must have moduleName & package", answers);
+					throw "Inquirer prompt not configured correctly"
+				}
 			}
 
 			var moduleSrc = "";
