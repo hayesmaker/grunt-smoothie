@@ -29,7 +29,7 @@ describe("<%= moduleName %> tests", function() {
 
 	});
 
-	describe("constructor: (*please replace with your own tests*)", function() {
+	describe("constructor: (*EXAMPLE* please replace with your own tests)", function() {
 
 		it("myPublicVar is set correctly", function() {
 			expect(myClass.myPublicVar).to.equal(1);
@@ -37,14 +37,6 @@ describe("<%= moduleName %> tests", function() {
 
 		it("init is called", function() {
 			expect(initSpy.called).to.equal(true);
-		});
-
-	});
-
-	describe("init: (*please replace with your own tests*)", function() {
-
-		it("console.log is called on init", function() {
-			expect(logSpy.called).to.equal(false);
 		});
 
 	});
