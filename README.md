@@ -1,12 +1,16 @@
-# grunt-smoothie [![Build Status](https://travis-ci.org/hayesmaker/grunt-smoothie.svg?branch=master)](https://travis-ci.org/hayesmaker/grunt-smoothie)
+[![Build Status](https://travis-ci.org/hayesmaker/grunt-smoothie.svg?branch=master)](https://travis-ci.org/hayesmaker/grunt-smoothie)
+# grunt-smoothie
+Auto generate modules for your javascript projects by mixing delicious flavours.
 
-![Delicious Smoothies](/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
+[![npm version](https://badge.fury.io/js/grunt-smoothie.svg)](http://badge.fury.io/js/grunt-smoothie) ![Delicious Smoothies](/images/smoothies.jpg?raw=true "Delicious JS Smoothies")
 
 ## Features
 
-> Auto generate modules for your javascript projects by mixing delicious flavours.
-> Sprinkle in some auto generated doc meta comments
-> Create test files in your favourite framework
+> Predefined templates for Node / Browserify modules
+> Auto generates Mocha Tests and Class files
+> Define your own custom templates (docs required)
+> Inquirer prompt for module name
+> Inquirer prompt for package name
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
