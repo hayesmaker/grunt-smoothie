@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 		var compile = function(answers) {
 
 			if (answers) {
-				if (answers.moduleName && options.package) {
+				if (answers.moduleName && answers.package) {
 					options.moduleName = answers.moduleName;
 					options.package = answers.package;
 				} else {
