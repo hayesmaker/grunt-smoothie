@@ -100,7 +100,7 @@ smoothie: {
     default_task: {
         options: {
             src: "app/src/",
-            moduleTemplate: 'tasks/flavours/node/app/classModule.js'
+            moduleTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js'
         }
     }
 }
@@ -117,8 +117,8 @@ smoothie: {
         options: {
            src: "app/src/",
            test: "app/test/",
-           moduleTemplate: 'tasks/flavours/node/app/classModule.js',
-           specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+           moduleTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js',
+           specTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js',
         }
     }
 }
@@ -134,8 +134,8 @@ smoothie: {
         options: {
             src: "app/src/",
             test: "app/test/",
-            moduleTemplate: 'tasks/flavours/node/app/classModule.js',
-            specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+            moduleTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModule.js',
+            specTemplate: './node_modules/grunt-smoothie/tasks/flavours/node/specs/classModuleSpec.js',
             packageMap: [
                 {
                     name: 'Top Level',
@@ -184,6 +184,7 @@ v1.0.0
 ------
 - Provide more custom templates for common module patterns in js
 - Provide some ES6 templates
+- Find a better way to reference packaged flavours
 
 
 
