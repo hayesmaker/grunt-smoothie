@@ -1,2 +1,2 @@
-test/mocha/
+test/mocha/fixtures/test/
 --recursive

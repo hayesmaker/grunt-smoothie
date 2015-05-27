@@ -1,8 +1,8 @@
 var expect = require('chai').expect,
 	sinon = require('sinon'),
-	MyTestedClass = require('../../../../test/mocha/fixtures/app/MyTestedClass');
+	NodeCustomType = require('../../../../test/mocha/fixtures/src/NodeCustomType');
 
-describe("MyTestedClass tests", function() {
+describe("NodeCustomType tests", function() {
 
 	var myClass, initSpy, logSpy;
 
@@ -12,15 +12,15 @@ describe("MyTestedClass tests", function() {
 
 	beforeEach(function() {
 
-		initSpy = sinon.spy(MyTestedClass.prototype, 'init');
+		initSpy = sinon.spy(NodeCustomType.prototype, 'init');
 		logSpy = sinon.spy(console, 'log');
 
-		myClass = new MyTestedClass();
+		myClass = new NodeCustomType();
 	});
 
 	afterEach(function() {
 
-		MyTestedClass.prototype.init.restore();
+		NodeCustomType.prototype.init.restore();
 		console.log.restore();
 
 	});

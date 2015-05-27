@@ -34,8 +34,8 @@ module.exports = function (grunt) {
 				options: {
 					src: "temp/src/",
 					test: "temp/test/",
-					moduleTemplate: 'tasks/flavours/node/app/classModule.js',
-					specTemplate: 'tasks/flavours/node/specs/classModuleSpec.js',
+					moduleTemplate: 'tasks/flavours/node/CustomType.js',
+					specTemplate: 'tasks/flavours/node/CustomTypeSpec.js',
 					packageMap: [
 						{
 							name: 'Top Level',
@@ -49,21 +49,33 @@ module.exports = function (grunt) {
 				}
 			},
 
+			angular_test_example: {
+				options: {
+					prompt: false,
+					appName: "angular-smoothie",
+					moduleName: "angularMain",
+					src: "test/mocha/fixtures/src/",
+					test: "test/mocha/fixtures/test/",
+					moduleTemplate: "./tasks/flavours/angular/appConfig.js",
+					specTemplate: "./tasks/flavours/angular/appConfigSpec.js"
+				}
+			},
+
 			node_test_example: {
 				options: {
 					prompt: false,
-					moduleName: "MyTestedClass",
-					src: "test/mocha/fixtures/app/",
+					moduleName: "NodeCustomType",
+					src: "test/mocha/fixtures/src/",
 					test: "test/mocha/fixtures/test/",
-					moduleTemplate: './tasks/flavours/node/app/classModule.js',
-					specTemplate: './tasks/flavours/node/specs/classModuleSpec.js'
+					moduleTemplate: './tasks/flavours/node/CustomType.js',
+					specTemplate: './tasks/flavours/node/CustomTypeSpec.js'
 
 				}
 			}
 		},
 
 		clean: {
-			test: ['test/mocha/fixtures/app/', 'test/mocha/fixtures/test/']
+			test: ['test/mocha/fixtures/src/', 'test/mocha/fixtures/test/']
 		},
 
 		mochaTest: {
@@ -71,7 +83,16 @@ module.exports = function (grunt) {
 				options: {
 					reporter: 'spec'
 				},
-				src: ['test/mocha/**/*.js']
+				src: ['test/mocha/fixtures/test/**/*.js']
+			}
+		},
+
+		connect: {
+			server: {
+				options: {
+					port: 8000,
+					base: '.'
+				}
 			}
 		}
 
@@ -84,11 +105,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
 	// plugin's task(s), then test the result.
-	grunt.registerTask('test', ['clean', 'smoothie:node_test_example', 'mochaTest']);
-	grunt.registerTask('test:prompt', ['clean', 'smoothie:node_test_example', 'mochaTest']);
+	grunt.registerTask('test', ['clean', 'smoothie:node_test_example', 'smoothie:angular_test_example', 'connect', 'mochaTest']);
+	//grunt.registerTask('test:prompt', ['clean', 'smoothie:node_test_example', 'mochaTest']);
 
 	// By default, lint and run all tests.
 	grunt.registerTask('default', ['smoothie:example_task']);

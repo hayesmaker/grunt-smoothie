@@ -8,13 +8,13 @@
 var myPrivateVar = 0;
 
 /**
- * MyTestedClass description
+ * NodeCustomType description
  * calls init
  *
- * @class MyTestedClass
+ * @class NodeCustomType
  * @constructor
  */
-var MyTestedClass = function() {
+var NodeCustomType = function() {
 	/**
 	 * A public var description
 	 *
@@ -25,10 +25,10 @@ var MyTestedClass = function() {
 	this.init();
 };
 
-var p = MyTestedClass.prototype;
+var p = NodeCustomType.prototype;
 
 /**
- * MyTestedClass initialisation
+ * NodeCustomType initialisation
  *
  * @method init
  */
@@ -37,4 +37,4 @@ p.init = function() {
 };
 
 
-module.exports = MyTestedClass;
+module.exports = NodeCustomType;
