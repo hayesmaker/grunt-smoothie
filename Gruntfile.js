@@ -56,8 +56,8 @@ module.exports = function (grunt) {
 					moduleName: "angularMain",
 					src: "test/mocha/fixtures/src/",
 					test: "test/mocha/fixtures/test/",
-					moduleTemplate: "./tasks/flavours/angular/appConfig.js",
-					specTemplate: "./tasks/flavours/angular/appConfigSpec.js"
+					moduleTemplate: "./tasks/flavours/angular1/appConfig.js",
+					specTemplate: "./tasks/flavours/angular1/appConfigSpec.js"
 				}
 			},
 

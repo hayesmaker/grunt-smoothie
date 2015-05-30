@@ -4,7 +4,7 @@ var expect = require('chai').expect,
 
 describe("<%= moduleName %> tests", function() {
 
-	var myClass, initSpy, logSpy;
+	var my<%= moduleName %>, initSpy;
 
 	before(function() {
 
@@ -19,10 +19,7 @@ describe("<%= moduleName %> tests", function() {
 	});
 
 	afterEach(function() {
-
 		<%= moduleName %>.prototype.init.restore();
-		console.log.restore();
-
 	});
 
 	after(function() {

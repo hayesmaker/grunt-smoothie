@@ -9,12 +9,14 @@ var myPrivateVar = 0;
 
 /**
  * <%= moduleName %> description
- * calls init
+ *
+ * defines a public variable and calls init - change this constructor to suit your needs.
+ * nb. there's no requirement to call an init function
  *
  * @class <%= moduleName %>
  * @constructor
  */
-var <%= moduleName %> = function() {
+function <%= moduleName %>() {
 	/**
 	 * A public var description
 	 *
@@ -23,7 +25,7 @@ var <%= moduleName %> = function() {
 	 */
 	this.myPublicVar = 1;
 	this.init();
-};
+}
 
 var p = <%= moduleName %>.prototype;
 

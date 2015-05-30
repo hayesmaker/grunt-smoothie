@@ -9,12 +9,14 @@ var myPrivateVar = 0;
 
 /**
  * NodeCustomType description
- * calls init
+ *
+ * defines a public variable and calls init - change this constructor to suit your needs.
+ * nb. there's no requirement to call an init function
  *
  * @class NodeCustomType
  * @constructor
  */
-var NodeCustomType = function() {
+function NodeCustomType() {
 	/**
 	 * A public var description
 	 *
@@ -23,7 +25,7 @@ var NodeCustomType = function() {
 	 */
 	this.myPublicVar = 1;
 	this.init();
-};
+}
 
 var p = NodeCustomType.prototype;
 

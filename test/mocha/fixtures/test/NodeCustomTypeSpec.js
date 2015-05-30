@@ -4,7 +4,7 @@ var expect = require('chai').expect,
 
 describe("NodeCustomType tests", function() {
 
-	var myClass, initSpy, logSpy;
+	var myNodeCustomType, initSpy;
 
 	before(function() {
 
@@ -19,10 +19,7 @@ describe("NodeCustomType tests", function() {
 	});
 
 	afterEach(function() {
-
 		NodeCustomType.prototype.init.restore();
-		console.log.restore();
-
 	});
 
 	after(function() {
