@@ -13,8 +13,6 @@ describe("<%= moduleName %> tests", function() {
 	beforeEach(function() {
 
 		initSpy = sinon.spy(<%= moduleName %>.prototype, 'init');
-		logSpy = sinon.spy(console, 'log');
-
 		myClass = new <%= moduleName %>();
 	});
 

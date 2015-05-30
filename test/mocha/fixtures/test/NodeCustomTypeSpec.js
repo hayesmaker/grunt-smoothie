@@ -13,8 +13,6 @@ describe("NodeCustomType tests", function() {
 	beforeEach(function() {
 
 		initSpy = sinon.spy(NodeCustomType.prototype, 'init');
-		logSpy = sinon.spy(console, 'log');
-
 		myClass = new NodeCustomType();
 	});
 
